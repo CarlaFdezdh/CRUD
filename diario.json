@@ -1,0 +1,16 @@
+[
+    {
+        "lugar": "Córdoba",
+        "fecha": "2023-05-15",
+        "notas": "Visité la Mezquita y el Alcázar de los Reyes Cristianos.",
+        "valoracion": 4,
+        "foto": "mezquita.jpg"
+    },
+    {
+        "lugar": "Cantabria",
+        "fecha": "2024-08-20",
+        "notas": "Exploré los pueblos de la costa y disfruté de la naturaleza.",
+        "valoracion": 5,
+        "foto": "pueblo.jpg"
+    }
+]

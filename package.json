@@ -1,0 +1,18 @@
+{
+  "name": "diario_corregido",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dialog": "^0.3.1",
+    "electron": "^39.2.7",
+    "mongoose": "^9.1.3",
+    "xel": "^0.39.2"
+  }
+}

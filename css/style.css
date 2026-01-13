@@ -1,0 +1,275 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffc971;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .window {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .toolbar-header {
+            background: linear-gradient(135deg, #cc5803 0%, #ffc04c 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .toolbar-header h1 {
+            font-size: 2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .window-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .pane-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .pane {
+            flex: 1;
+        }
+
+        #wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .toolbar-footer {
+            background: white;
+            border-top: 2px solid #e9ecef;
+            padding: 20px;
+        }
+
+        #nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #cc5803 0%, #ffc04c 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Centered vertical drawer */
+        .drawer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            opacity: 0;
+            pointer-events: none;
+            width: 360px;
+            max-width: 90%;
+            height: 80vh;
+            min-height: 300px;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition: transform 0.28s cubic-bezier(.2,.9,.2,1), opacity 0.18s ease;
+        }
+
+        .drawer.active {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        #sub {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .close-drawer {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e9ecef;
+            color: #333;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .close-drawer:hover {
+            background: #dee2e6;
+            transform: rotate(90deg);
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        #searchButton,
+        #addButton {
+            width: 100%;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        /* Estilos para las tarjetas de entradas */
+        .entry-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .entry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .entry-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .entry-card-content {
+            padding: 20px;
+        }
+
+        .entry-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .entry-card p {
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .rating {
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+#searchButton,#addButton {
+            width: 100%;
+            height: 50px;
+            margin-top: 10px;
+            justify-content: center;
+        }
